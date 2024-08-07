@@ -1,25 +1,21 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import Grid from './components/Grid';
+import Controls from './components/Controls';
+import useRobot from './hooks/useRobot';
 
-function App() {
+const App = () => {
+  const { robot, moveForward, rotate } = useRobot();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <h1>Robot Simulator</h1>
+      <div className="grid-container">
+        <Grid robot={robot} />
+      </div>
+      <Controls moveForward={moveForward} rotate={rotate} />
     </div>
   );
-}
+};
 
 export default App;
